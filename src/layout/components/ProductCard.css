@@ -1,0 +1,111 @@
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  position: relative; /* Ensures the absolute positioning of child elements works */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden; /* Ensures the "View more" element stays within bounds */
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the image area */
+.product-img-area {
+  position: relative; /* Ensures the absolute positioning of icons or overlays works */
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  height: 180px; /* Define a fixed height for uniformity */
+  background-color: #ffffff; /* Add a subtle background color */
+  border-bottom: 1px solid #ddd; /* Separate image and details */
+  overflow: hidden; /* Prevents overflow issues */
+}
+
+.product-img-area img {
+  width: 200px; /* Set a fixed width for the image */
+  height: 150px; /* Set a fixed height for the image */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+/* Styling for the details area */
+.product-details-area {
+  padding: 5px;
+  text-align: left; 
+}
+
+.product-details-area h2 {
+  font-size: 1.2em;
+  margin: 0;
+  color: #333;
+  font-weight: bold; /* Enhance the header text */
+  text-overflow: ellipsis; /* Handle overflow gracefully */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.product-details-area p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95em;
+  line-height: 1.5; /* Improve readability */
+}
+
+.product-details-area p.price {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #00aced; /* Highlight the price */
+  margin-top: 5px;
+}
+
+.product-img-area svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.product-img-area svg:hover {
+  color: #00aced;
+  background-color: #f4f4f4;
+}
+
+/* Hide "View more" by default */
+.product-view-more {
+  display: none;
+  background-color: #f4f4f4;
+  border-radius: 20px;
+  color: #333;
+  padding: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Show "View more" on hover */
+.product-card:hover .product-view-more {
+  display: block;
+  transform: translateY(5px); /* Adds a slight movement effect */
+}
+
+.product-view-more:hover {
+  background-color: #00aced;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .product-img-area img {
+    height: 150px;
+  }
+}
