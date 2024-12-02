@@ -5,16 +5,18 @@ import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import ProductPage from "./pages/ProductPage";
 import Header from "./components/header";
+import CartPage from "./pages/CartPage";
 
 const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/product" element={<ProductPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

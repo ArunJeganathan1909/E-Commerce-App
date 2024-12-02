@@ -1,0 +1,385 @@
+/* Cart Page Container */
+.cart-page {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: "Arial, sans-serif";
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  /* Title of Cart */
+  .cart-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .cart-product-page {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .cart-product {
+    max-height: 500px; /* Set a height limit */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Prevent content from being hidden behind the scrollbar */
+  
+    /* For Firefox: */
+    scrollbar-width: none; /* Makes the scrollbar thinner */
+    scrollbar-color: #00aced #f9f9f9; /* Thumb and track colors */
+  }
+  
+  /* For WebKit-based browsers (e.g., Chrome, Edge, Safari): */
+  .cart-product::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  .cart-product::-webkit-scrollbar-track {
+    background: #f9f9f9; /* Background color of the scrollbar track */
+    border-radius: 10px; /* Optional: rounded corners */
+  }
+  
+  .cart-product::-webkit-scrollbar-thumb {
+    background-color: #00aced; /* Scrollbar thumb color */
+    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+    border: 2px solid #f9f9f9; /* Adds space around the thumb for better aesthetics */
+  }
+  
+  .cart-product::-webkit-scrollbar-thumb:hover {
+    background-color: #007bb5; /* Darker shade on hover */
+  }
+  
+  /* Cart Item Styling */
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background: #ffffff;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent content overflow */
+  }
+  
+  /* When Item is Selected */
+  .cart-item.selected-item {
+    border: #00aced 2px solid;
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.1);
+  }
+  
+  /* Hover Effect on Cart Item */
+  .cart-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cart Item Image */
+  .cart-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    max-width: 100%; /* Prevent overflow */
+  }
+  
+  /* Cart Item Content */
+  .cart-item-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between items */
+    flex: 1;
+  }
+  
+  .cart-item-container {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    max-width: 100%; /* Prevent overflow */
+  }
+  
+  .cart-image-name {
+    display: flex;
+    align-items: center;
+  }
+  
+  .item-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 5px;
+    gap: 10px;
+    flex-shrink: 1;
+    overflow: hidden;
+    min-width: 0;
+  }
+  
+  .item-name {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
+    max-width: 250px;
+    overflow: hidden; /* Prevent text overflow */
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Prevent wrapping */
+    margin: 0;
+  }
+  
+  .cart-details {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+  }
+  
+  .item-quantity svg {
+    font-size: 0.8rem;
+    border-radius: 10px;
+    padding: 2px;
+  }
+  
+  /* Item Price */
+  .item-price {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  /* Total Price for Each Item */
+  .item-total {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  
+  /* Quantity Adjuster */
+  .item-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .quantity-display {
+    margin: 0 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #333;
+  }
+  
+  .item-quantity-change {
+    display: flex;
+    align-items: center;
+    background: #ccc;
+    border-radius: 10px;
+  }
+  
+  .item-remove {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Remove Button */
+  .remove-button {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: background 0.3s;
+    margin-top: 0;
+  }
+  
+  .remove-button:hover {
+    background: #d43838;
+  }
+  
+  /* Total Cost at the Bottom */
+  .cart-total {
+    text-align: right;
+    font-size: 1.6rem;
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+  }
+  
+  /* Empty Cart Message */
+  .empty-cart {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 20px;
+  }
+  
+  /* Checkbox Styling */
+  .cart-item .MuiCheckbox-root {
+    padding: 0;
+  }
+  
+  .cart-item .MuiCheckbox-root .MuiSvgIcon-root {
+    visibility: hidden;
+  }
+  
+  .cart-item .MuiCheckbox-root .MuiTouchRipple-root {
+    display: none;
+  }
+  
+  /* Style the checkbox when selected */
+  .cart-item .MuiCheckbox-root.Mui-checked {
+    background-color: #00aced;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+  }
+  
+  /* Style the checkbox border for unselected state */
+  .cart-item .MuiCheckbox-root {
+    display: inline-block;
+    border: 1px solid #00aced;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .cart-item .MuiCheckbox-root:hover {
+    border-color: #00aced;
+  }
+  
+  .checkout-area {
+    padding: 20px;
+    max-height: 300px;
+    border-radius: 8px;
+    border: #00aced 2px solid;
+  }
+  
+  .cart-total,
+  .selected-quantity {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Promo Code Section */
+  .promo-code {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .promo-code-label {
+    position: relative;
+    font-size: 1rem;
+    color: #333;
+    left: 0;
+    opacity: 1;
+  }
+  
+  .promo-code input {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .promo-code input:focus {
+    outline: none;
+    border-color: #00aced;
+  }
+  
+  /* Buy Now Button */
+  .buy-now-button {
+    font-size: 1.2rem;
+    padding: 12px;
+    background-color: #00aced;
+    color: white;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  .buy-now-button:hover {
+    background-color: #0091c6;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .cart-page {
+      padding: 15px;
+    }
+  
+    .cart-product-page {
+      flex-direction: column;
+    }
+  
+    .cart-product {
+      overflow-y: visible;
+      padding: 0;
+    }
+  
+    .cart-image {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .item-name {
+      font-size: 1.1rem;
+      max-width: 100%;
+    }
+  
+    .remove-button {
+      padding: 6px 10px;
+    }
+  
+    .cart-total {
+      font-size: 1.4rem;
+    }
+  
+    .checkout-area {
+      padding: 15px;
+    }
+  
+    .buy-now-button {
+      padding: 10px;
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cart-page {
+      padding: 10px;
+    }
+  
+    .cart-image {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .item-name {
+      font-size: 1rem;
+    }
+  
+    .cart-total {
+      font-size: 1.2rem;
+    }
+  }
+  
