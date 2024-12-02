@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import AirPodMax1 from "../../assets/img/AirPodMax1.jpeg"
-import AirPodMax2 from "../../assets/img/AirPodMax2.jpg"
-import AirPodMax3 from "../../assets/img/AirPodMax3.jpg"
-import TWSM19_1 from "../../assets/img/TWSM19_1.png"
-import TWSM19_2 from "../../assets/img/TWSM19_2.jpg"
-import TWSM19_3 from "../../assets/img/TWSM19_3.jpeg"
+import AirPodMax1 from "../../assets/img/AirPodMax1.jpeg";
+import AirPodMax2 from "../../assets/img/AirPodMax2.jpg";
+import AirPodMax3 from "../../assets/img/AirPodMax3.jpg";
+import TWSM19_1 from "../../assets/img/TWSM19_1.png";
+import TWSM19_2 from "../../assets/img/TWSM19_2.jpg";
+import TWSM19_3 from "../../assets/img/TWSM19_3.jpeg";
 
 const initialState = {
   products: [
@@ -13,35 +13,40 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
+      categories: ["Headphones", "Audio"], // Added categories
     },
     {
       id: 2,
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3],
+      categories: ["Speakers", "Audio"], // Added categories
     },
     {
       id: 3,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      name: "Product 3",
+      price: 15,
+      description: "Best in class speakers",
+      images: [TWSM19_1, TWSM19_2],
+      categories: ["Speakers", "Home Audio"], // Added categories
     },
     {
       id: 4,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      name: "Product 4",
+      price: 25,
+      description: "Noise-cancelling headphones",
+      images: [AirPodMax1, AirPodMax2],
+      categories: ["Headphones", "Noise Cancelling", "Audio"], // Added categories
     },
     {
       id: 5,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      name: "Product 5",
+      price: 30,
+      description: "Portable speaker with excellent bass",
+      images: [TWSM19_1],
+      categories: ["Speakers", "Portable", "Outdoor"], // Added categories
     },
     {
       id: 6,
@@ -55,7 +60,7 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
     },
     {
       id: 8,
@@ -69,7 +74,7 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
     },
     {
       id: 10,
@@ -83,7 +88,7 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
     },
     {
       id: 12,
@@ -97,7 +102,7 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
     },
     {
       id: 14,
@@ -111,7 +116,7 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
     },
     {
       id: 16,
@@ -125,7 +130,7 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
     },
     {
       id: 18,
@@ -139,7 +144,7 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
     },
     {
       id: 20,
@@ -153,7 +158,7 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
     },
     {
       id: 22,
@@ -167,7 +172,7 @@ const initialState = {
       name: "Product 1",
       price: 10,
       description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3], 
+      images: [AirPodMax1, AirPodMax2, AirPodMax3],
     },
     {
       id: 24,

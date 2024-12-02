@@ -1,11 +1,130 @@
-.login-form{
-    display: flex;
-    flex-direction: column;
-    padding: 20px 60px;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  max-width: 90%;
+  margin: 20px auto; /* Center the form */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-content{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.login-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px; /* Add some space between fields */
+  position: relative; /* To position the label and icon inside the field */
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.2s ease all;
+  pointer-events: none; /* Prevent label from being clickable */
+  opacity: 0; /* Initially, label is invisible */
+}
+
+input {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+  padding-left: 35px; /* Space for label */
+  padding-right: 40px; /* Space for the eye icon */
+}
+
+input:focus {
+  border-color: #00aced; /* Highlight border on focus */
+}
+
+input:not(:placeholder-shown) + label,
+label.label-active {
+  opacity: 1; /* Show label when the input is filled */
+  top: 0;
+  font-size: 12px;
+  color: #00aced; /* Change label color when active */
+  background: #fff;
+  padding: 0 10px;
+}
+
+.login-content .eye-icon {
+  position: absolute;
+  right: 10px; /* Position the icon inside the input field */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s;
+}
+
+.login-content .eye-icon:hover {
+  color: #333; /* Darken the icon on hover */
+}
+
+.error {
+  color: #d9534f;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+button {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #00aced;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #007ab8; /* Darken button on hover */
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+p {
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.account-verify{
+  color: #00aced;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.account-verify:hover {
+  color: #007ab8; /* Change color on hover */
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .login-form {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  label,
+  input,
+  button {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 12px;
+  }
 }

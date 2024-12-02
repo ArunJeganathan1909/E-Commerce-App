@@ -23,12 +23,7 @@ const AuthPage = () => {
           <LoginForm onSubmit={handleLogin} />
           <p>
             No account?{" "}
-            <span
-              style={{ color: "blue", cursor: "pointer", textDecoration: "underline" }}
-              onClick={() => setIsLogin(false)}
-            >
-              Register here
-            </span>
+            <span className="account-verify" onClick={() => setIsLogin(false)}>Register here</span>
           </p>
         </>
       ) : (
@@ -37,12 +32,7 @@ const AuthPage = () => {
           <RegistrationForm onSubmit={handleRegister} />
           <p>
             Already have an account?{" "}
-            <span
-              style={{ color: "blue", cursor: "pointer", textDecoration: "underline" }}
-              onClick={() => setIsLogin(true)}
-            >
-              Login here
-            </span>
+            <span className="account-verify" onClick={() => setIsLogin(true)}>Login here</span>
           </p>
         </>
       )}

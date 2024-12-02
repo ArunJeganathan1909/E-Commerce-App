@@ -32,20 +32,6 @@
   display: none;
 }
 
-@media (max-width: 992px) {
-  .header-logo-smaller {
-    display: flex;
-  }
-
-  .company-logo-larger {
-    display: none;
-  }
-
-  .mobile-logo-area {
-    display: flex;
-  }
-}
-
 /* Main menu styling */
 .main-menu {
   display: flex;
@@ -75,12 +61,12 @@
 
 .menu-list .drop-down:hover,
 .icon-list-menu-mobile:hover {
-  color: #00aced;
+  border-bottom: 2px solid #00aced;
 }
 
 .menu-list .drop-down.active {
   color: #00aced;
-  border-bottom: #00aced 2px solid;
+  font-weight: bolder;
 }
 
 /* Mobile topbar */
@@ -237,6 +223,21 @@
   justify-content: center;
   color: #116888;
   font-size: 25px;
+}
+
+
+@media (max-width: 992px) {
+  .header-logo-smaller {
+    display: flex;
+  }
+
+  .company-logo-larger {
+    display: none;
+  }
+
+  .mobile-logo-area {
+    display: flex;
+  }
 }
 
 /* Mobile styles */

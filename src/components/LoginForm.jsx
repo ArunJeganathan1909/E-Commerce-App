@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import "../layout/components/LoginForm.css"
+import "../layout/components/LoginForm.css";
+import { IconButton } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material"; // Importing icons
 
 const LoginForm = ({ onSubmit }) => {
+  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
+
   const initialValues = {
     email: "",
     password: "",
@@ -18,6 +22,10 @@ const LoginForm = ({ onSubmit }) => {
       .required("Password is required"),
   });
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev); // Toggle the visibility
+  };
+
   return (
     <Formik
       initialValues={initialValues}
@@ -27,17 +35,47 @@ const LoginForm = ({ onSubmit }) => {
         setSubmitting(false);
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, values }) => (
         <Form className="login-form">
           <div className="login-content">
-            <label htmlFor="email">Email</label>
-            <Field type="email" id="email" name="email" />
+            <Field
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter Your Email"
+              className="input-field"
+            />
+            <label
+              htmlFor="email"
+              className={values.email ? "label-active" : ""}
+            >
+              Email
+            </label>
             <ErrorMessage name="email" component="div" className="error" />
           </div>
 
           <div className="login-content">
-            <label htmlFor="password">Password</label>
-            <Field type="password" id="password" name="password" />
+            <Field
+              type={showPassword ? "text" : "password"} // Toggle the field type based on the state
+              id="password"
+              name="password"
+              placeholder="Enter Your Password"
+              className="input-field"
+            />
+            <label
+              htmlFor="password"
+              className={values.password ? "label-active" : ""}
+            >
+              Password
+            </label>
+            <IconButton
+              onClick={togglePasswordVisibility}
+              edge="end"
+              aria-label="toggle password visibility"
+              className="eye-icon"
+            >
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
             <ErrorMessage name="password" component="div" className="error" />
           </div>
 

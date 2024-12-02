@@ -136,7 +136,10 @@ const Header = () => {
             <div className="menu-list">
               <div>
                 <a
-                  onClick={() => navigate("/")}
+                  onClick={() => {
+                    navigate("/");
+                    setShowMenuModal(false);
+                  }}
                   className={`drop-down ${isActive("/")}`}
                   style={{ cursor: "pointer" }}
                 >
@@ -145,7 +148,10 @@ const Header = () => {
               </div>
               <div>
                 <a
-                  onClick={() => navigate("/product")}
+                  onClick={() => {
+                    navigate("/product");
+                    setShowMenuModal(false);
+                  }}
                   className={`drop-down ${isActive("/product")}`}
                   style={{ cursor: "pointer" }}
                 >
@@ -154,7 +160,10 @@ const Header = () => {
               </div>
               <div>
                 <a
-                  onClick={() => navigate("/about")}
+                  onClick={() => {
+                    navigate("/about");
+                    setShowMenuModal(false);
+                  }}
                   className={`drop-down ${isActive("/about")}`}
                   style={{ cursor: "pointer" }}
                 >
@@ -163,7 +172,10 @@ const Header = () => {
               </div>
               <div>
                 <a
-                  onClick={() => navigate("/contact")}
+                  onClick={() => {
+                    navigate("/contact");
+                    setShowMenuModal(false);
+                  }}
                   className={`drop-down ${isActive("/contact")}`}
                   style={{ cursor: "pointer" }}
                 >
@@ -178,7 +190,10 @@ const Header = () => {
               </div>
               <div
                 className="icon-list-menu-mobile"
-                onClick={() => setShowAuthModal(true)}
+                onClick={() => {
+                  setShowAuthModal(true);
+                  setShowMenuModal(false);
+                }}
               >
                 <span>
                   <LoginIcon fontSize="medium" />
