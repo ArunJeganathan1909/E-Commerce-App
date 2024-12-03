@@ -21,14 +21,6 @@ const initialState = {
       quantity: 2,
       images: TWSM19_1, 
     },
-    {
-      id: 3,
-      name: "Portable Bluetooth Speaker",
-      price: 99,
-      description: "Compact speaker with powerful bass.",
-      quantity: 1,
-      images: TWSM19_2, 
-    },
   ],
 };
 

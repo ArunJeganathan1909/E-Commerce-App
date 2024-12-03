@@ -214,11 +214,14 @@ const Header = () => {
                 </a>
               </div>
             </div>
-            <div className="icon-list-mobile" onClick={() => {
-                    navigate("/dashboard");
-                    setShowMenuModal(false);
-                  }}>
-              <div className="icon-list-menu-mobile">
+            <div className="icon-list-menu-mobile-container">
+              <div
+                className="icon-list-menu-mobile"
+                onClick={() => {
+                  navigate("/dashboard");
+                  setShowMenuModal(false);
+                }}
+              >
                 <PersonIcon fontSize="medium" />
                 <span>DASHBOARD</span>
               </div>

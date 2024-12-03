@@ -5,184 +5,66 @@ import AirPodMax3 from "../../assets/img/AirPodMax3.jpg";
 import TWSM19_1 from "../../assets/img/TWSM19_1.png";
 import TWSM19_2 from "../../assets/img/TWSM19_2.jpg";
 import TWSM19_3 from "../../assets/img/TWSM19_3.jpeg";
+import AbansTV_1 from "../../assets/img/Abans TV 1.jpeg";
+import AbansTV_2 from "../../assets/img/Abans TV 2.jpg";
+import BSpeaker1 from "../../assets/img/Bluthooth speaker 1.jpeg";
+import BSpeaker2 from "../../assets/img/Bluthooth speaker 2.jpg";
+import HomeTheater1 from "../../assets/img/Home theator 1.jpeg";
+import HomeTheater2 from "../../assets/img/Home theator 2.jpeg";
+import Radio1 from "../../assets/img/Radio 1.jpeg";
+import Radio2 from "../../assets/img/Radio 2.jpeg";
+import Speaker1 from "../../assets/img/Speaker.jpeg";
+import Speaker2 from "../../assets/img/Speaker1.jpeg";
+
+const generateProducts = () => {
+  const products = [];
+  const baseNames = [
+    "AirPod Max",
+    "TWS",
+    "Mi Buds",
+    "Abans TV",
+    "Bluetooth Speaker",
+    "Home Theater",
+    "Radio",
+    "Speaker",
+  ];
+  const baseImages = [
+    [AirPodMax1, AirPodMax2, AirPodMax3],
+    [TWSM19_1, TWSM19_2, TWSM19_3],
+    [TWSM19_1, TWSM19_2],
+    [AbansTV_1, AbansTV_2],
+    [BSpeaker1, BSpeaker2],
+    [HomeTheater1, HomeTheater2],
+    [Radio1, Radio2],
+    [Speaker1, Speaker2],
+  ];
+  const baseCategories = [
+    ["Headphones", "Audio"],
+    ["Speakers", "Audio"],
+    ["Speakers", "Home Audio"],
+    ["Television", "Entertainment"],
+    ["Portable Audio", "Outdoor"],
+    ["Home Audio", "Cinema"],
+    ["Vintage", "Audio"],
+    ["Audio Equipment", "Home Audio"],
+  ];
+
+  for (let i = 0; i < 30; i++) {
+    const baseIndex = i % baseNames.length;
+    products.push({
+      id: i + 1,
+      name: `${baseNames[baseIndex]} ${i + 1}`,
+      price: 10 + (i % 5) * 5,
+      description: `This is a great product - ${baseNames[baseIndex]} ${i + 1}`,
+      images: baseImages[baseIndex],
+      categories: baseCategories[baseIndex],
+    });
+  }
+  return products;
+};
 
 const initialState = {
-  products: [
-    {
-      id: 1,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-      categories: ["Headphones", "Audio"],  
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3],
-      categories: ["Speakers", "Audio"], 
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      price: 15,
-      description: "Best in class speakers",
-      images: [TWSM19_1, TWSM19_2],
-      categories: ["Speakers", "Home Audio"], 
-    },
-    {
-      id: 4,
-      name: "Product 4",
-      price: 25,
-      description: "Noise-cancelling headphones",
-      images: [AirPodMax1, AirPodMax2],
-      categories: ["Headphones", "Noise Cancelling", "Audio"], 
-    },
-    {
-      id: 5,
-      name: "Product 5",
-      price: 30,
-      description: "Portable speaker with excellent bass",
-      images: [TWSM19_1],
-      categories: ["Speakers", "Portable", "Outdoor"],
-    },
-    {
-      id: 6,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-    {
-      id: 7,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-    },
-    {
-      id: 8,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-    {
-      id: 9,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-    },
-    {
-      id: 10,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-    {
-      id: 11,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-    },
-    {
-      id: 12,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-    {
-      id: 13,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-    },
-    {
-      id: 14,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-    {
-      id: 15,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-    },
-    {
-      id: 16,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-    {
-      id: 17,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-    },
-    {
-      id: 18,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-    {
-      id: 19,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-    },
-    {
-      id: 20,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-    {
-      id: 21,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-    },
-    {
-      id: 22,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-    {
-      id: 23,
-      name: "Product 1",
-      price: 10,
-      description: "A great product",
-      images: [AirPodMax1, AirPodMax2, AirPodMax3],
-    },
-    {
-      id: 24,
-      name: "Product 2",
-      price: 20,
-      description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
-    },
-   
-  ],
+  products: generateProducts(),
 };
 
 const productSlice = createSlice({

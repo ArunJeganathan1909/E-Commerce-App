@@ -44,6 +44,13 @@
   gap: 20px;
 }
 
+.icon-list-menu-mobile-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
 .menu-list .drop-down,
 .icon-list-menu-mobile {
   text-decoration: none;
@@ -52,7 +59,6 @@
   transition: color 0.3s ease;
   gap: 20px;
   font-family: "Arvo", serif;
-  font-size: 0.8rem;
 }
 
 .icon-list-menu-mobile {
