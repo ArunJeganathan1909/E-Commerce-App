@@ -5,10 +5,13 @@ import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonIcon from "@mui/icons-material/Person";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useAuth } from "../AuthContext";
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
+import { useDispatch, useSelector } from "react-redux";
+import { signoutSuccess } from "../redux/user/userSlice";
 import "../layout/components/Header.css";
 
 const Header = () => {
@@ -18,6 +21,9 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(true);
   const { login, register } = useAuth();
   const [showMenuModal, setShowMenuModal] = useState(false);
+  const dispatch = useDispatch();
+
+  const currentUser = useSelector((state) => state.user.currentUser);
 
   const handleLogin = (values) => {
     login(values);
@@ -29,25 +35,28 @@ const Header = () => {
     setShowAuthModal(false);
   };
 
+  const handleLogout = () => {
+    dispatch(signoutSuccess());
+    setShowMenuModal(false);
+    alert("You have been logged out.");
+  };
+
   const isActive = (path) => (location.pathname === path ? "active" : "");
 
   return (
     <header className="header-area">
-      {/* Logo for smaller screens */}
       <div className="header-logo-smaller">
         <a onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
           <img alt="logo" className="img-fluid" src={logo} />
         </a>
       </div>
 
-      {/* Logo for larger screens */}
       <div className="company-logo-larger">
         <a onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
           <img src={logo} alt="logo" />
         </a>
       </div>
 
-      {/* Main menu */}
       <div className="main-menu">
         <div className="menu-list">
           <div>
@@ -89,26 +98,37 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Right navigation */}
       <div className="right-nav">
         <div className="icon-list">
-          <div className="icon-list-menu">
+          <div className="icon-list-menu" onClick={() => navigate("/cart")}>
+            <ShoppingCartIcon fontSize="small" />
+          </div>
+          <div
+            className="icon-list-menu"
+            onClick={() => navigate("/dashboard")}
+          >
             <PersonIcon fontSize="small" />
           </div>
           <div
             className="icon-list-menu"
-            onClick={() => setShowAuthModal(true)}
+            onClick={() => {
+              if (currentUser) {
+                handleLogout();
+              } else {
+                setShowAuthModal(true);
+              }
+            }}
             style={{ cursor: "pointer", color: "var(--primary-color1)" }}
+            id={currentUser ? "logout" : "login"}
           >
             <span>
               <LoginIcon fontSize="small" />
             </span>
-            <span>LOGIN</span>
+            <span>{currentUser ? "LOGOUT" : "LOGIN"}</span>
           </div>
         </div>
       </div>
 
-      {/* Sidebar button */}
       <IconButton
         className="sidebar-button mobile-menu-btn"
         onClick={() => setShowMenuModal(true)}
@@ -116,7 +136,6 @@ const Header = () => {
         <MenuIcon />
       </IconButton>
 
-      {/* Menu Modal for Mobile */}
       {showMenuModal && (
         <div className="menu-modal">
           <div className="menu-modal-content">
@@ -161,6 +180,18 @@ const Header = () => {
               <div>
                 <a
                   onClick={() => {
+                    navigate("/cart");
+                    setShowMenuModal(false);
+                  }}
+                  className={`drop-down ${isActive("/cart")}`}
+                  style={{ cursor: "pointer" }}
+                >
+                  Cart
+                </a>
+              </div>
+              <div>
+                <a
+                  onClick={() => {
                     navigate("/about");
                     setShowMenuModal(false);
                   }}
@@ -183,29 +214,36 @@ const Header = () => {
                 </a>
               </div>
             </div>
-            <div className="icon-list-mobile">
+            <div className="icon-list-mobile" onClick={() => {
+                    navigate("/dashboard");
+                    setShowMenuModal(false);
+                  }}>
               <div className="icon-list-menu-mobile">
                 <PersonIcon fontSize="medium" />
-                <span>Profile</span>
+                <span>DASHBOARD</span>
               </div>
               <div
                 className="icon-list-menu-mobile"
                 onClick={() => {
-                  setShowAuthModal(true);
-                  setShowMenuModal(false);
+                  if (currentUser) {
+                    handleLogout();
+                    setShowMenuModal(false);
+                  } else {
+                    setShowAuthModal(true);
+                    setShowMenuModal(false);
+                  }
                 }}
               >
                 <span>
                   <LoginIcon fontSize="medium" />
                 </span>
-                <span>LOGIN</span>
+                <span>{currentUser ? "LOGOUT" : "LOGIN"}</span>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* Auth Modal */}
       {showAuthModal && (
         <div className="auth-modal">
           <div className="auth-modal-content">
@@ -221,7 +259,10 @@ const Header = () => {
             {isLogin ? (
               <>
                 <h2 className="form-heading">Login</h2>
-                <LoginForm onSubmit={handleLogin} />
+                <LoginForm
+                  onSubmit={handleLogin}
+                  closeAuthModal={() => setShowAuthModal(false)}
+                />
                 <p>
                   No account?{" "}
                   <span

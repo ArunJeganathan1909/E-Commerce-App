@@ -14,7 +14,7 @@ const initialState = {
       price: 10,
       description: "A great product",
       images: [AirPodMax1, AirPodMax2, AirPodMax3],
-      categories: ["Headphones", "Audio"], // Added categories
+      categories: ["Headphones", "Audio"],  
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ const initialState = {
       price: 20,
       description: "Another great product",
       images: [TWSM19_1, TWSM19_2, TWSM19_3],
-      categories: ["Speakers", "Audio"], // Added categories
+      categories: ["Speakers", "Audio"], 
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ const initialState = {
       price: 15,
       description: "Best in class speakers",
       images: [TWSM19_1, TWSM19_2],
-      categories: ["Speakers", "Home Audio"], // Added categories
+      categories: ["Speakers", "Home Audio"], 
     },
     {
       id: 4,
@@ -38,7 +38,7 @@ const initialState = {
       price: 25,
       description: "Noise-cancelling headphones",
       images: [AirPodMax1, AirPodMax2],
-      categories: ["Headphones", "Noise Cancelling", "Audio"], // Added categories
+      categories: ["Headphones", "Noise Cancelling", "Audio"], 
     },
     {
       id: 5,
@@ -46,14 +46,14 @@ const initialState = {
       price: 30,
       description: "Portable speaker with excellent bass",
       images: [TWSM19_1],
-      categories: ["Speakers", "Portable", "Outdoor"], // Added categories
+      categories: ["Speakers", "Portable", "Outdoor"],
     },
     {
       id: 6,
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
     {
       id: 7,
@@ -67,7 +67,7 @@ const initialState = {
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
     {
       id: 9,
@@ -81,7 +81,7 @@ const initialState = {
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
     {
       id: 11,
@@ -95,7 +95,7 @@ const initialState = {
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
     {
       id: 13,
@@ -109,7 +109,7 @@ const initialState = {
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
     {
       id: 15,
@@ -123,7 +123,7 @@ const initialState = {
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
     {
       id: 17,
@@ -137,7 +137,7 @@ const initialState = {
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
     {
       id: 19,
@@ -151,7 +151,7 @@ const initialState = {
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
     {
       id: 21,
@@ -165,7 +165,7 @@ const initialState = {
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
     {
       id: 23,
@@ -179,9 +179,9 @@ const initialState = {
       name: "Product 2",
       price: 20,
       description: "Another great product",
-      images: [TWSM19_1, TWSM19_2, TWSM19_3], // Multiple images
+      images: [TWSM19_1, TWSM19_2, TWSM19_3], 
     },
-    // Add more products
+   
   ],
 };
 

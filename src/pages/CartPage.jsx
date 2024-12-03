@@ -64,7 +64,6 @@ const CartPage = () => {
   };
 
   const handleBuyNow = () => {
-    // Add your buy now logic here (e.g., proceed to checkout)
     alert("Proceeding to checkout...");
   };
 

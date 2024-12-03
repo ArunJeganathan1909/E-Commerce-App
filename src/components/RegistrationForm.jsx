@@ -3,11 +3,18 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "../layout/components/LoginForm.css";
 import { IconButton } from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material"; // Importing icons
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import {
+  updateStart,
+  updateSuccess,
+  updateFailure,
+} from "../redux/user/userSlice"; 
 
 const RegistrationForm = ({ onSubmit }) => {
-  const [showPassword, setShowPassword] = useState(false); // State for password visibility
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const initialValues = {
     name: "",
@@ -30,20 +37,28 @@ const RegistrationForm = ({ onSubmit }) => {
   });
 
   const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev); // Toggle the visibility of the password field
+    setShowPassword((prev) => !prev);
   };
 
   const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword((prev) => !prev); // Toggle the visibility of the confirm password field
+    setShowConfirmPassword((prev) => !prev);
   };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        onSubmit(values);
-        setSubmitting(false);
+      onSubmit={async (values, { setSubmitting }) => {
+        dispatch(updateStart());
+        try {
+          const response = await onSubmit(values); 
+          dispatch(updateSuccess(response));
+          alert("Successfully Registered!"); 
+          setSubmitting(false);
+        } catch (error) {
+          dispatch(updateFailure(error.message));
+          setSubmitting(false);
+        }
       }}
     >
       {({ isSubmitting, values }) => (
@@ -56,10 +71,7 @@ const RegistrationForm = ({ onSubmit }) => {
               placeholder="Enter Your Name"
               className="input-field"
             />
-            <label
-              htmlFor="name"
-              className={values.name ? "label-active" : ""}
-            >
+            <label htmlFor="name" className={values.name ? "label-active" : ""}>
               Name
             </label>
             <ErrorMessage name="name" component="div" className="error" />
@@ -84,7 +96,7 @@ const RegistrationForm = ({ onSubmit }) => {
 
           <div className="login-content">
             <Field
-              type={showPassword ? "text" : "password"} // Toggle password visibility
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               placeholder="Enter Your Password"
@@ -109,7 +121,7 @@ const RegistrationForm = ({ onSubmit }) => {
 
           <div className="login-content">
             <Field
-              type={showConfirmPassword ? "text" : "password"} // Toggle confirm password visibility
+              type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Confirm Your Password"
@@ -129,7 +141,11 @@ const RegistrationForm = ({ onSubmit }) => {
             >
               {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>
-            <ErrorMessage name="confirmPassword" component="div" className="error" />
+            <ErrorMessage
+              name="confirmPassword"
+              component="div"
+              className="error"
+            />
           </div>
 
           <button type="submit" disabled={isSubmitting}>

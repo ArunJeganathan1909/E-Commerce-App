@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap");
+
+:root {
+  font-family: "Arvo", serif;
+}
+
+body {
+  font-family: "Arvo", serif;
+}
+
 .filters {
   display: flex;
   align-items: center;
@@ -6,6 +16,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Arvo", serif;
 }
 
 .filters:hover {
@@ -19,7 +30,6 @@
   margin: 0 10px;
   transition: color 0.3s ease, transform 0.3s ease;
   flex-shrink: 0;
-  transition: transform 0.2s ease, color 0.3s ease;
 }
 
 .filter-arrow:hover {
@@ -55,7 +65,7 @@
   text-align: center;
   flex-shrink: 0;
   white-space: nowrap;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Added transform transition */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .price-filter-type.selected,

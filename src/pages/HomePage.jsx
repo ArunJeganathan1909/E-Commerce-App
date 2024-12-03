@@ -8,15 +8,14 @@ import "../layout/pages/ProductPage.css";
 const HomePage = () => {
   const products = useSelector((state) => state.product.products);
   const [searchQuery, setSearchQuery] = useState("");
-  const [shownProductsCount, setShownProductsCount] = useState(20); // Track how many products are shown
+  const [shownProductsCount, setShownProductsCount] = useState(20); 
   const [randomProducts, setRandomProducts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Select random products every time products change
     const getRandomProducts = () => {
       const shuffled = [...products].sort(() => 0.5 - Math.random());
-      setRandomProducts(shuffled); // Store all random products, not just the first 20
+      setRandomProducts(shuffled); 
     };
 
     if (products.length > 0) {
@@ -25,16 +24,13 @@ const HomePage = () => {
   }, [products]);
 
   const handleSearch = () => {
-    // Navigate to /product with the search query as a query parameter
     navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
   };
 
   const handleViewMore = () => {
-    // Show the next 20 products
     setShownProductsCount(shownProductsCount + 20);
   };
 
-  // Check if the "View More" button should be visible
   const isViewMoreVisible = shownProductsCount < randomProducts.length;
 
   return (

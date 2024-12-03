@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"; // Updated import
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"; // Updated import
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"; 
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"; 
 import ProductCard from "../components/ProductCard";
 import "../layout/pages/ProductPage.css";
 import "../layout/components/Filters.css";
@@ -20,10 +20,8 @@ const ProductPage = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [priceOrder, setPriceOrder] = useState("");
-  const [isAtStart, setIsAtStart] = useState(true); // Track if at start
-  const [isAtEnd, setIsAtEnd] = useState(false);  // Track if at end
-
-  // Reference for the filters container
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false); 
   const filtersRef = useRef(null);
 
   useEffect(() => {
@@ -74,7 +72,6 @@ const ProductPage = () => {
     applyFilters();
   }, [searchQuery, selectedCategories, products, priceOrder]);
 
-  // Extract unique categories from filtered products
   const uniqueCategories = [
     ...new Set(filteredProducts.flatMap((product) => product.categories || [])),
   ];
@@ -102,8 +99,8 @@ const ProductPage = () => {
   const handleScrollLeft = () => {
     if (filtersRef.current) {
       filtersRef.current.scrollBy({
-        left: -200, // Scroll left by 200px
-        behavior: "smooth", // Smooth scrolling effect
+        left: -200, 
+        behavior: "smooth", 
       });
     }
   };
@@ -111,8 +108,8 @@ const ProductPage = () => {
   const handleScrollRight = () => {
     if (filtersRef.current) {
       filtersRef.current.scrollBy({
-        left: 200, // Scroll right by 200px
-        behavior: "smooth", // Smooth scrolling effect
+        left: 200, 
+        behavior: "smooth", 
       });
     }
   };
@@ -123,21 +120,17 @@ const ProductPage = () => {
       const containerWidth = filtersRef.current.clientWidth;
       const contentWidth = filtersRef.current.scrollWidth;
 
-      // Check if we are at the start of the content
       setIsAtStart(scrollPosition === 0);
 
-      // Check if we are at the end of the content
       setIsAtEnd(scrollPosition + containerWidth === contentWidth);
     }
   };
 
   useEffect(() => {
-    // Listen for scroll events to determine the position
     if (filtersRef.current) {
       filtersRef.current.addEventListener("scroll", handleScroll);
     }
 
-    // Cleanup the event listener on unmount
     return () => {
       if (filtersRef.current) {
         filtersRef.current.removeEventListener("scroll", handleScroll);
@@ -166,7 +159,7 @@ const ProductPage = () => {
         {!isAtStart && (
           <ArrowBackIosIcon
             className="filter-arrow"
-            onClick={handleScrollLeft} // Handle scroll left
+            onClick={handleScrollLeft} 
           />
         )}
         <div className="filters-container" ref={filtersRef}>
@@ -213,7 +206,7 @@ const ProductPage = () => {
         {!isAtEnd && (
           <ArrowForwardIosIcon
             className="filter-arrow"
-            onClick={handleScrollRight} // Handle scroll right
+            onClick={handleScrollRight} 
           />
         )}
       </div>

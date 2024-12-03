@@ -1,37 +1,60 @@
 import React, { createContext, useState, useContext } from "react";
 
-// Create AuthContext
 const AuthContext = createContext();
 
-// Custom hook to use AuthContext
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-// AuthProvider component
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [error, setError] = useState(null);
+
+  const adminUser = {
+    email: "admin@gmail.com",
+    password: "Admin1234",
+  };
 
   const login = (user) => {
-    setCurrentUser(user);
-    console.log("User logged in:", user);
-    // Save user to localStorage/sessionStorage if needed
+    if (
+      user.email === adminUser.email &&
+      user.password === adminUser.password
+    ) {
+      setCurrentUser({ email: user.email });
+      setError(null);
+      console.log("Admin logged in:", user);
+      return;
+    }
+
+    if (user.email && user.password) {
+      setCurrentUser({ email: user.email });
+      setError(null);
+      console.log("User logged in:", user);
+    } else {
+      setError("Invalid credentials");
+    }
   };
 
   const register = (user) => {
-    setCurrentUser(user);
-    console.log("User registered:", user);
-    // Save user to localStorage/sessionStorage if needed
+    if (user.email && user.password) {
+      setCurrentUser(user);
+      setError(null);
+      console.log("User registered:", user);
+    } else {
+      setError("Registration failed");
+    }
   };
 
   const logout = () => {
     setCurrentUser(null);
+    setError(null);
     console.log("User logged out");
-    // Clear user data from localStorage/sessionStorage if needed
   };
 
   return (
-    <AuthContext.Provider value={{ currentUser, login, register, logout }}>
+    <AuthContext.Provider
+      value={{ currentUser, login, register, logout, error }}
+    >
       {children}
     </AuthContext.Provider>
   );

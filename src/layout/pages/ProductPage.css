@@ -1,15 +1,13 @@
-/* General styles for the Product Page */
+@import url("https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap");
+
 .product-list {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(250px, 1fr)
-  ); /* Grid layout with responsive columns */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
   margin: 0 auto;
   max-width: 1200px;
-  transition: all 0.3s ease; /* Smooth transition for responsive grid */
+  transition: all 0.3s ease;
 }
 
 .product-search-area {
@@ -24,7 +22,7 @@
   padding: 5px 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  transition: all 0.3s ease; /* Smooth transition for resizing */
+  transition: all 0.3s ease;
 }
 
 .search-input {
@@ -33,15 +31,15 @@
   outline: none;
   font-size: 1rem;
   padding: 10px;
-  border-radius: 20px; /* Rounded corners for input */
-  transition: padding 0.3s ease; /* Smooth transition for input resizing */
+  border-radius: 20px;
+  transition: padding 0.3s ease;
 }
 
 .search-icon {
   color: #555;
   cursor: pointer;
   margin-left: 10px;
-  transition: color 0.3s ease; /* Smooth transition for color change */
+  transition: color 0.3s ease;
 }
 
 .search-icon:hover {
@@ -49,10 +47,9 @@
 }
 
 .search-icon:active {
-  transform: scale(0.95); /* Slight shrinking effect on click */
+  transform: scale(0.95);
 }
 
-/* View More Button */
 .show-more-filter-products {
   text-align: center;
   padding: 12px 20px;
@@ -70,14 +67,13 @@
 .show-more-filter-products:hover {
   background-color: #00aced;
   color: #fff;
-  transform: scale(1.05); /* Slight enlargement effect on hover */
+  transform: scale(1.05);
 }
 
 .show-more-filter-products:active {
-  transform: scale(1); /* Reset scale on click */
+  transform: scale(1);
 }
 
-/* Home Header Section */
 .home-header,
 .product-header {
   text-align: center;
@@ -87,77 +83,76 @@
 .home-header h1 {
   font-size: 2.5rem;
   color: #333;
+  font-family: "Arvo", serif;
 }
 
-.product-header h1{
+.product-header h1 {
   font-size: 2rem;
+  font-family: "Arvo", serif;
 }
 
 .home-header p {
   font-size: 1.2rem;
   color: #666;
+  font-family: "Arvo", serif;
 }
 
-/* Responsive design for small screens */
 @media (max-width: 768px) {
   .product-list {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(200px, 1fr)
-    ); /* Smaller columns for small screens */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
   .product-search-area {
-    max-width: 85%; /* Adjust input width on smaller screens */
+    max-width: 85%;
     padding: 5px 10px;
   }
 
   .search-input {
-    font-size: 0.9rem; /* Slightly smaller font size */
+    font-size: 0.9rem;
     padding: 8px;
   }
 
   .search-icon {
-    margin-left: 5px; /* Reduced margin for smaller screens */
+    margin-left: 5px;
   }
 
-  .home-header h1{
-    font-size: 2rem; /* Slightly smaller heading on smaller screens */
+  .home-header h1 {
+    font-size: 2rem;
   }
 
-  .product-header h1{
+  .product-header h1 {
     font-size: 1.8rem;
   }
 
   .home-header p {
-    font-size: 1rem; /* Slightly smaller text on smaller screens */
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .product-search-area {
-    max-width: 85%; /* Full width on very small screens */
+    max-width: 85%;
     padding: 5px;
   }
 
   .search-input {
-    font-size: 0.85rem; /* Even smaller font size for mobile */
+    font-size: 0.85rem;
     padding: 7px;
   }
 
   .show-more-filter-products {
-    font-size: 0.9rem; /* Smaller text size for smaller screens */
+    font-size: 0.9rem;
   }
 
   .home-header h1 {
-    font-size: 1.8rem; /* Even smaller heading on mobile */
+    font-size: 1.8rem;
   }
 
-  .product-header h1{
+  .product-header h1 {
     font-size: 1.5rem;
   }
 
   .home-header p {
-    font-size: 0.9rem; /* Smaller text on mobile */
+    font-size: 0.9rem;
   }
 }

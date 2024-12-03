@@ -3,10 +3,18 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "../layout/components/LoginForm.css";
 import { IconButton } from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material"; // Importing icons
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInStart,
+  signInFailure,
+  signInSuccess,
+} from "../redux/user/userSlice"; 
 
-const LoginForm = ({ onSubmit }) => {
-  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
+const LoginForm = ({ onSubmit, closeAuthModal }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.user); 
 
   const initialValues = {
     email: "",
@@ -23,17 +31,34 @@ const LoginForm = ({ onSubmit }) => {
   });
 
   const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev); // Toggle the visibility
+    setShowPassword((prev) => !prev);
+  };
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    dispatch(signInStart());
+    try {
+      if (
+        values.email === "admin@gmail.com" &&
+        values.password === "Admin1234"
+      ) {
+        dispatch(signInSuccess({ email: values.email }));
+        alert("Successfully Logged In!"); 
+        closeAuthModal();
+      } else {
+        throw new Error("Invalid credentials");
+      }
+    } catch (err) {
+      dispatch(signInFailure(err.message));
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        onSubmit(values);
-        setSubmitting(false);
-      }}
+      onSubmit={handleSubmit}
     >
       {({ isSubmitting, values }) => (
         <Form className="login-form">
@@ -56,7 +81,7 @@ const LoginForm = ({ onSubmit }) => {
 
           <div className="login-content">
             <Field
-              type={showPassword ? "text" : "password"} // Toggle the field type based on the state
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               placeholder="Enter Your Password"
@@ -79,9 +104,10 @@ const LoginForm = ({ onSubmit }) => {
             <ErrorMessage name="password" component="div" className="error" />
           </div>
 
-          <button type="submit" disabled={isSubmitting}>
-            Login
+          <button type="submit" disabled={isSubmitting || loading}>
+            {loading ? "Logging in..." : "Login"}
           </button>
+          {error && <div className="error">{error}</div>}
         </Form>
       )}
     </Formik>

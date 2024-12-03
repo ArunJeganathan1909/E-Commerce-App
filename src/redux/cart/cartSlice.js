@@ -11,7 +11,7 @@ const initialState = {
       price: 549,
       description: "Over-ear headphones with high-fidelity sound.",
       quantity: 1,
-      images: AirPodMax1, // Example image path
+      images: AirPodMax1, 
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const initialState = {
       price: 29,
       description: "Wireless earbuds with crystal clear sound.",
       quantity: 2,
-      images: TWSM19_1, // Example image path
+      images: TWSM19_1, 
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ const initialState = {
       price: 99,
       description: "Compact speaker with powerful bass.",
       quantity: 1,
-      images: TWSM19_2, // Example image path
+      images: TWSM19_2, 
     },
   ],
 };
@@ -36,22 +36,19 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    // Add to cart
     addItem: (state, action) => {
       const item = state.items.find((i) => i.id === action.payload.id);
       if (item) {
-        item.quantity += 1;
+        item.quantity += action.payload.quantity;
       } else {
-        state.items.push({ ...action.payload, quantity: 1 });
+        state.items.push(action.payload);
       }
     },
 
-    // Remove from cart
     removeItem: (state, action) => {
       state.items = state.items.filter((i) => i.id !== action.payload.id);
     },
 
-    // Update quantity
     updateQuantity: (state, action) => {
       const item = state.items.find((i) => i.id === action.payload.id);
       if (item) {
